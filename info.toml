@@ -1,0 +1,11 @@
+[meta]
+name = "Dashboard Horizon Style"
+author = "Greep"
+category = "Overlay"
+
+version = "1.0"
+
+[script]
+dependencies = [ "VehicleState" ]
+
+timeout = 0
