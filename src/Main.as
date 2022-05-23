@@ -18,3 +18,8 @@ void RenderInterface()
         PluginSettings::Size = Locator::GetSize();
     }
 }
+
+void OnSettingsChanged()
+{
+    g_dashboard.UpdateGaugeTheme();
+}

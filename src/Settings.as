@@ -9,6 +9,13 @@ namespace PluginSettings
     [Setting name="Locator Mode (move dashboard)" category="General"]
     bool LocatorMode = false;
 
+    enum Themes {
+        Arc
+    }
+
+    [Setting name="Theme" category="General"]
+    Themes Theme = Themes::Arc;
+
     [Setting name="Position" category="General"]
     vec2 Position = vec2(1.0f, 1.02f);
 

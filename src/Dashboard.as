@@ -4,7 +4,20 @@ class Dashboard
 
     Dashboard()
     {
-        @m_gauge = Gauge();
+        UpdateGaugeTheme();
+    }
+
+    void UpdateGaugeTheme()
+    {
+        switch(PluginSettings::Theme)
+        {
+            case PluginSettings::Themes::Arc:
+                @m_gauge = ArcGauge();
+                break;
+            default:
+                @m_gauge = Gauge();
+                break;
+        }
     }
 
     void Render()
