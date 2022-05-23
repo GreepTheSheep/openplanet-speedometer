@@ -13,7 +13,7 @@ void Render()
 void RenderInterface()
 {
     if (PluginSettings::LocatorMode) {
-        Locator::Render("Horizon Dashboard", PluginSettings::Position, PluginSettings::Size);
+        Locator::Render("Speedometer", PluginSettings::Position, PluginSettings::Size);
         PluginSettings::Position = Locator::GetPos();
         PluginSettings::Size = Locator::GetSize();
     }

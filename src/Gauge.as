@@ -13,19 +13,6 @@ class Gauge
     float m_minRpm = 200.0f; // Minimal RPM to avoid flickering at engine idle
     float m_maxRpm = 11000.0f;
 
-    float startAngle = 110.0f;
-    float endAngle = 335.0f;
-    float angleTotal = endAngle - startAngle;
-
-    Resources::Font@ m_GearFont;
-    Resources::Font@ m_SpeedFont;
-
-    Gauge()
-    {
-        @m_GearFont = Resources::GetFont("src/Fonts/Oswald-Regular.ttf");
-        @m_SpeedFont = Resources::GetFont("src/Fonts/Oswald-Light.ttf");
-    }
-
     void InternalRender(CSceneVehicleVisState@ vis)
     {
         m_rpm = VehicleState::GetRPM(vis);
