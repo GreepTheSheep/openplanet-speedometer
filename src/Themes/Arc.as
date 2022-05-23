@@ -1,5 +1,20 @@
 class ArcGauge : Gauge
 {
+
+    float startAngle = 110.0f;
+    float endAngle = 335.0f;
+    float angleTotal = endAngle - startAngle;
+
+    Resources::Font@ m_GearFont;
+    Resources::Font@ m_SpeedFont;
+
+    ArcGauge()
+    {
+        super();
+        @m_GearFont = Resources::GetFont("src/Fonts/Oswald-Regular.ttf");
+        @m_SpeedFont = Resources::GetFont("src/Fonts/Oswald-Light.ttf");
+    }
+
     void RenderRPM() override
     {
         // background
