@@ -17,11 +17,13 @@ class Gauge
     float endAngle = 335.0f;
     float angleTotal = endAngle - startAngle;
 
-    Resources::Font@ gearFont;
+    Resources::Font@ m_GearFont;
+    Resources::Font@ m_SpeedFont;
 
     Gauge()
     {
-        @gearFont = Resources::GetFont("DroidSans-Bold.ttf");
+        @m_GearFont = Resources::GetFont("src/Fonts/Oswald-Regular.ttf");
+        @m_SpeedFont = Resources::GetFont("src/Fonts/Oswald-Light.ttf");
     }
 
     void InternalRender(CSceneVehicleVisState@ vis)
@@ -91,7 +93,7 @@ class Gauge
 
         // gear text
         nvg::TextAlign(nvg::Align::Center);
-        nvg::FontFace(gearFont);
+        nvg::FontFace(m_GearFont);
         nvg::FontSize(m_size.x * 0.1f);
         string gear = tostring(m_gear);
         if (m_gear == -1) {
@@ -106,8 +108,7 @@ class Gauge
     void RenderSpeed()
     {
         nvg::BeginPath();
-        // nvg::TextAlign(nvg::Align::Center);
-        nvg::FontFace(gearFont);
+        nvg::FontFace(m_SpeedFont);
         nvg::FontSize(m_size.x * 0.2f);
         // remove negative sign
         int speed = Text::ParseInt(Text::Format("%.0f", Math::Abs(m_speed)));
