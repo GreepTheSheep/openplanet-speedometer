@@ -2,9 +2,9 @@
 
 @echo off
 
-IF EXIST DashboardHorizonStyle.op (
-    del DashboardHorizonStyle.op
+IF EXIST Speedometer.op (
+    del Speedometer.op
 )
 :: Set here your path to 7-Zip, including 7z.exe
 SET zip="C:\Program Files\7-Zip\7z.exe"
-%zip% a -mx1 -tzip DashboardHorizonStyle.op info.toml src
+%zip% a -mx1 -tzip Speedometer.op info.toml src
