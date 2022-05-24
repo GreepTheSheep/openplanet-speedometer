@@ -1,4 +1,4 @@
-class ArcGauge : Gauge
+class BasicGauge : Gauge
 {
 
     float startAngle = 110.0f;
@@ -8,7 +8,7 @@ class ArcGauge : Gauge
     Resources::Font@ m_GearFont;
     Resources::Font@ m_SpeedFont;
 
-    ArcGauge()
+    BasicGauge()
     {
         super();
         @m_GearFont = Resources::GetFont("src/Fonts/Oswald-Regular.ttf");
@@ -25,21 +25,42 @@ class ArcGauge : Gauge
         nvg::Stroke();
         nvg::ClosePath();
 
-        // foreground
-        nvg::BeginPath();
-        nvg::StrokeWidth(m_size.x * 0.04f);
-        nvg::Arc(m_center, m_size.x * 0.3, Utils::DegToRad(startAngle), Utils::DegToRad(startAngle + (angleTotal * ((m_rpm - m_minRpm) * 0.0001))), nvg::Winding::CW);
-        if (m_rpm <= m_minRpm) {
-            nvg::StrokeColor(vec4(0,0,0,0));
-        } else if (m_rpm <= PluginSettings::RPMDownshift && PluginSettings::RPMDownshiftUpshift) {
-            nvg::StrokeColor(PluginSettings::RPMDownshiftColor);
-        } else if (m_rpm >= PluginSettings::RPMUpshift && PluginSettings::RPMDownshiftUpshift) {
-            nvg::StrokeColor(PluginSettings::RPMUpshiftColor);
-        } else {
-            nvg::StrokeColor(PluginSettings::RPMColor);
+       if (PluginSettings::RPMArc) {
+            nvg::BeginPath();
+            nvg::StrokeWidth(m_size.x * PluginSettings::RPMArcWidth);
+            nvg::Arc(m_center, m_size.x * 0.3, Utils::DegToRad(startAngle), Utils::DegToRad(startAngle + (angleTotal * ((m_rpm - m_minRpm) * 0.0001))), nvg::Winding::CW);
+            if (m_rpm <= m_minRpm) {
+                nvg::StrokeColor(vec4(0,0,0,0));
+            } else if (m_rpm <= PluginSettings::RPMDownshift && PluginSettings::RPMDownshiftUpshift) {
+                nvg::StrokeColor(PluginSettings::RPMDownshiftColor);
+            } else if (m_rpm >= PluginSettings::RPMUpshift && PluginSettings::RPMDownshiftUpshift) {
+                nvg::StrokeColor(PluginSettings::RPMUpshiftColor);
+            } else {
+                nvg::StrokeColor(PluginSettings::RPMColor);
+            }
+            nvg::Stroke();
+            nvg::ClosePath();
         }
-        nvg::Stroke();
-        nvg::ClosePath();
+
+        if (PluginSettings::RPMNeedle) {
+            nvg::BeginPath();
+            nvg::StrokeWidth(m_size.x * PluginSettings::RPMNeedleWidth);
+            float xs = m_center.x + ((m_size.x*0.425)/3) * Math::Cos(Utils::DegToRad(startAngle + (angleTotal * ((m_rpm - m_minRpm) * 0.0001))));
+            float ys = m_center.y + ((m_size.x*0.425)/3) * Math::Sin(Utils::DegToRad(startAngle + (angleTotal * ((m_rpm - m_minRpm) * 0.0001))));
+            float xe = m_center.x + (m_size.x*0.425) * Math::Cos(Utils::DegToRad(startAngle + (angleTotal * ((m_rpm - m_minRpm) * 0.0001))));
+            float ye = m_center.y + (m_size.x*0.425) * Math::Sin(Utils::DegToRad(startAngle + (angleTotal * ((m_rpm - m_minRpm) * 0.0001))));
+            nvg::MoveTo(vec2(xs, ys));
+            nvg::LineTo(vec2(xe, ye));
+            if (m_rpm <= PluginSettings::RPMDownshift && PluginSettings::RPMDownshiftUpshift) {
+                nvg::StrokeColor(PluginSettings::RPMDownshiftColor);
+            } else if (m_rpm >= PluginSettings::RPMUpshift && PluginSettings::RPMDownshiftUpshift) {
+                nvg::StrokeColor(PluginSettings::RPMUpshiftColor);
+            } else {
+                nvg::StrokeColor(PluginSettings::RPMColor);
+            }
+            nvg::Stroke();
+            nvg::ClosePath();
+        }
     }
 
     void RenderGear() override

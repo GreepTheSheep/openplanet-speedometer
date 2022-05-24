@@ -28,6 +28,18 @@ namespace PluginSettings
     [Setting color name="RPM Background" category="RPM"]
     vec4 RPMBackground = vec4(0.1f, 0.1f, 0.1f, 0.0f);
 
+    [Setting name="Show Needle" category="RPM"]
+    bool RPMNeedle = true;
+
+    [Setting name="Show Arc" category="RPM"]
+    bool RPMArc = true;
+
+    [Setting name="Needle width" category="RPM" min=0.0 max=0.1]
+    float RPMNeedleWidth = 0.02f;
+
+    [Setting name="Arc width" category="RPM" min=0.0 max=0.1]
+    float RPMArcWidth = 0.04f;
+
     [Setting name="Downshift/Upshift indicator" category="RPM"]
     bool RPMDownshiftUpshift = true;
 
