@@ -10,11 +10,11 @@ namespace PluginSettings
     bool LocatorMode = false;
 
     enum Themes {
-        Arc
+        Basic
     }
 
     [Setting name="Theme" category="General"]
-    Themes Theme = Themes::Arc;
+    Themes Theme = Themes::Basic;
 
     [Setting name="Position" category="General"]
     vec2 Position = vec2(1.0f, 1.02f);

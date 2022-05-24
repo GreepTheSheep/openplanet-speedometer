@@ -11,8 +11,8 @@ class Dashboard
     {
         switch(PluginSettings::Theme)
         {
-            case PluginSettings::Themes::Arc:
-                @m_gauge = ArcGauge();
+            case PluginSettings::Themes::Basic:
+                @m_gauge = BasicGauge();
                 break;
             default:
                 @m_gauge = Gauge();
