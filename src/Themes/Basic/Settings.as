@@ -8,10 +8,10 @@ namespace BasicGaugeSettings
     float BasicGaugeSpeedColorAlpha = 1.0f;
 
     [Setting hidden]
-    vec3 BasicGaugeSpeedIdleColor = vec3(1.0f, 1.0f, 1.0f);
+    vec3 BasicGaugeSpeedIdleColor = vec3(0.0f, 0.0f, 0.0f);
 
     [Setting hidden]
-    float BasicGaugeSpeedIdleColorAlpha = 1.0f;
+    float BasicGaugeSpeedIdleColorAlpha = 0.5f;
 
     // RPM
     [Setting hidden]
@@ -78,8 +78,8 @@ namespace BasicGaugeSettings
     void ResetAllToDefault() {
         BasicGaugeSpeedColor = vec3(1.0f, 1.0f, 1.0f);
         BasicGaugeSpeedColorAlpha = 1.0f;
-        BasicGaugeSpeedIdleColor = vec3(1.0f, 1.0f, 1.0f);
-        BasicGaugeSpeedIdleColorAlpha = 1.0f;
+        BasicGaugeSpeedIdleColor = vec3(0.0f, 0.0f, 0.0f);
+        BasicGaugeSpeedIdleColorAlpha = 0.5f;
         BasicGaugeRPMColor = vec3(1.0f, 0.65f, 0.1f);
         BasicGaugeRPMColorAlpha = 1.0f;
         BasicGaugeRPMBackground = vec3(0.1f, 0.1f, 0.1f);
