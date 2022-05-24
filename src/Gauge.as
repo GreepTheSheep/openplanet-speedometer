@@ -32,14 +32,21 @@ class Gauge
 
     void Render()
     {
-        RenderRPM();
+        RenderBackground();
         RenderSpeed();
+        RenderRPM();
         RenderGear();
     }
+
+    void RenderBackground(){}
+
+    void RenderSpeed(){}
 
     void RenderRPM(){}
 
     void RenderGear(){}
 
-    void RenderSpeed(){}
+    void RenderSettingsTab() {
+        UI::Text("This theme does not have any settings.");
+    }
 }
