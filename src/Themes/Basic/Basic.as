@@ -11,8 +11,8 @@ class BasicGauge : Gauge
     BasicGauge()
     {
         super();
-        @m_GearFont = Resources::GetFont("src/Fonts/Oswald-Regular.ttf");
-        @m_SpeedFont = Resources::GetFont("src/Fonts/Oswald-Light.ttf");
+        @m_GearFont = Resources::GetFont("src/Fonts/Oswald-Demi-Bold-Italic.ttf");
+        @m_SpeedFont = Resources::GetFont("src/Fonts/Oswald-Light-Italic.ttf");
     }
 
     void RenderSpeed() override
