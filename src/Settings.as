@@ -1,16 +1,17 @@
 namespace PluginSettings
 {
-    [Setting name="Show Dashboard" category="General"]
-    bool ShowDashboard = true;
+    [Setting name="Show Speedometer" category="General"]
+    bool ShowSpeedometer = true;
 
     [Setting name="Hide when not playing" category="General"]
     bool HideWhenNotPlaying = true;
 
-    [Setting name="Locator Mode (move dashboard)" category="General"]
+    [Setting name="Locator Mode (move speedometer)" category="General"]
     bool LocatorMode = false;
 
     enum Themes {
-        Basic
+        Basic,
+        BasicDigital
     }
 
     [Setting name="Theme" category="General"]

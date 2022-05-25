@@ -14,6 +14,9 @@ class Dashboard
             case PluginSettings::Themes::Basic:
                 @m_gauge = BasicGauge();
                 break;
+            case PluginSettings::Themes::BasicDigital:
+                @m_gauge = BasicDigitalGauge();
+                break;
             default:
                 @m_gauge = Gauge();
                 break;
@@ -22,7 +25,7 @@ class Dashboard
 
     void Render()
     {
-        if (!PluginSettings::ShowDashboard) return;
+        if (!PluginSettings::ShowSpeedometer) return;
 
         auto app = GetApp();
 
