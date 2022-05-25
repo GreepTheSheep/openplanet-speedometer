@@ -11,10 +11,12 @@ namespace Locator
         UI::SetNextWindowSize(int(settingSize.x), int(settingSize.y), UI::Cond::Appearing);
         UI::SetNextWindowPos(int(pos.x), int(pos.y), UI::Cond::Appearing);
 
+        UI::PushStyleColor(UI::Col::WindowBg, vec4(0.0, 0.0, 0.0, 0.6));
         UI::Begin(Icons::ArrowsAlt + " Locator: " + name, UI::WindowFlags::NoCollapse | UI::WindowFlags::NoSavedSettings);
         g_size = UI::GetWindowSize();
         g_pos = UI::GetWindowPos() / (screenSize - g_size);
         UI::End();
+        UI::PopStyleColor();
     }
 
     vec2 GetPos() { return g_pos; }
