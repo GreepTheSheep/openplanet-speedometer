@@ -18,10 +18,10 @@ namespace PluginSettings
     Themes Theme = Themes::Basic;
 
     [Setting name="Position" category="General"]
-    vec2 Position = vec2(1.0f, 1.02f);
+    vec2 Position = vec2(1.0f, 1.06f);
 
     [Setting name="Size" category="General"]
-    vec2 Size = vec2(250, 200);
+    vec2 Size = vec2(350, 350);
 
     [SettingsTab name="Theme Settings"]
     void RenderThemeSettingsTab()
