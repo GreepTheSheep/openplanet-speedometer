@@ -19,6 +19,12 @@ void RenderInterface()
     }
 }
 
+void RenderMenu()
+{
+    if(UI::MenuItem("\\$fa0" + Icons::Kenney::ButtonCircle + " \\$zSpeedometer", "", PluginSettings::ShowSpeedometer))
+        PluginSettings::ShowSpeedometer = !PluginSettings::ShowSpeedometer;
+}
+
 void OnSettingsChanged()
 {
     g_dashboard.UpdateGaugeTheme();
