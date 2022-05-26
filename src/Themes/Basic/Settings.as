@@ -15,7 +15,7 @@ namespace BasicGaugeSettings
 
     // RPM
     [Setting hidden]
-    vec3 BasicGaugeRPMColor = vec3(1.0f, 0.65f, 0.1f);
+    vec3 BasicGaugeRPMColor = vec3(1.0f, 1.0f, 1.0f);
 
     [Setting hidden]
     float BasicGaugeRPMColorAlpha = 1.0f;
@@ -45,7 +45,7 @@ namespace BasicGaugeSettings
     float BasicGaugeRPMDownshift = 6500;
 
     [Setting hidden]
-    vec3 BasicGaugeRPMDownshiftColor = vec3(0.0f, 1.0f, 0.0f);
+    vec3 BasicGaugeRPMDownshiftColor = vec3(1.0f, 1.0f, 1.0f);
 
     [Setting hidden]
     float BasicGaugeRPMDownshiftColorAlpha = 1.0f;
@@ -80,7 +80,8 @@ namespace BasicGaugeSettings
         BasicGaugeSpeedColorAlpha = 1.0f;
         BasicGaugeSpeedIdleColor = vec3(0.0f, 0.0f, 0.0f);
         BasicGaugeSpeedIdleColorAlpha = 0.5f;
-        BasicGaugeRPMColor = vec3(1.0f, 0.65f, 0.1f);
+
+        BasicGaugeRPMColor = vec3(1.0f, 1.0f, 1.0f);
         BasicGaugeRPMColorAlpha = 1.0f;
         BasicGaugeRPMBackground = vec3(0.1f, 0.1f, 0.1f);
         BasicGaugeRPMBackgroundAlpha = 0.0f;
@@ -90,11 +91,12 @@ namespace BasicGaugeSettings
         BasicGaugeRPMArcWidth = 0.04f;
         BasicGaugeRPMDownshiftUpshift = true;
         BasicGaugeRPMDownshift = 6500;
-        BasicGaugeRPMDownshiftColor = vec3(0.0f, 1.0f, 0.0f);
+        BasicGaugeRPMDownshiftColor = vec3(1.0f, 1.0f, 1.0f);
         BasicGaugeRPMDownshiftColorAlpha = 1.0f;
         BasicGaugeRPMUpshift = 10000;
         BasicGaugeRPMUpshiftColor = vec3(1.0f, 0.0f, 0.0f);
         BasicGaugeRPMUpshiftColorAlpha = 1.0f;
+
         BasicGaugeGearColor = vec3(0.075f, 1.0f, 0.553f);
         BasicGaugeGearColorAlpha = 1.0f;
         BasicGaugeGearUpshift = true;

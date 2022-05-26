@@ -15,7 +15,7 @@ namespace BasicDigitalGaugeSettings
 
     // RPM
     [Setting hidden]
-    vec3 BasicDigitalGaugeRPMColor = vec3(1.0f, 0.65f, 0.1f);
+    vec3 BasicDigitalGaugeRPMColor = vec3(1.0f, 1.0f, 1.0f);
 
     [Setting hidden]
     float BasicDigitalGaugeRPMColorAlpha = 1.0f;
@@ -45,7 +45,7 @@ namespace BasicDigitalGaugeSettings
     float BasicDigitalGaugeRPMDownshift = 6500;
 
     [Setting hidden]
-    vec3 BasicDigitalGaugeRPMDownshiftColor = vec3(0.0f, 1.0f, 0.0f);
+    vec3 BasicDigitalGaugeRPMDownshiftColor = vec3(1.0f, 1.0f, 1.0f);
 
     [Setting hidden]
     float BasicDigitalGaugeRPMDownshiftColorAlpha = 1.0f;
