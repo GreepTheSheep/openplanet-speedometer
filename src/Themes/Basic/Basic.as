@@ -25,7 +25,7 @@ class BasicGauge : Gauge
         nvg::FontSize(m_size.x * 0.2f);
         // remove negative sign
         int speed = Text::ParseInt(Text::Format("%.0f", Math::Abs(m_speed)));
-        vec2 margin = vec2(20, 65);
+        vec2 margin = vec2(m_size.x * 0.07f, 60 + (m_size.y * 0.1f));
         if (m_speed > -1 && m_speed < 1) {
             nvg::FillColor(speedColorIdle);
             nvg::Text(m_center.x+margin.x, m_center.y+margin.y, "000");
@@ -130,7 +130,7 @@ class BasicGauge : Gauge
         if (m_gear == -1) {
             gear = "R";
         }
-        nvg::Text(m_center.x-1, m_center.y+11, gear);
+        nvg::Text(m_center.x-1, m_center.y+m_size.x * 0.045, gear);
 
         nvg::Stroke();
         nvg::ClosePath();
