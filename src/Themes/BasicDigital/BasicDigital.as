@@ -54,16 +54,14 @@ class BasicDigitalGauge : Gauge
         vec4 RPMDownshiftColor = vec4(BasicDigitalGaugeSettings::BasicDigitalGaugeRPMDownshiftColor.x, BasicDigitalGaugeSettings::BasicDigitalGaugeRPMDownshiftColor.y, BasicDigitalGaugeSettings::BasicDigitalGaugeRPMDownshiftColor.z, BasicDigitalGaugeSettings::BasicDigitalGaugeRPMDownshiftColorAlpha);
         vec4 RPMUpshiftColor = vec4(BasicDigitalGaugeSettings::BasicDigitalGaugeRPMUpshiftColor.x, BasicDigitalGaugeSettings::BasicDigitalGaugeRPMUpshiftColor.y, BasicDigitalGaugeSettings::BasicDigitalGaugeRPMUpshiftColor.z, BasicDigitalGaugeSettings::BasicDigitalGaugeRPMUpshiftColorAlpha);
         const float blockPadding = 6.0f;
-        const float blockSpacing = 4.0f;
-        vec2 blockSize = vec2(6, m_size.y - blockPadding * 2);
-        float blockSpace = blockSize.x + blockSpacing - 4;
-        int numDots = int((m_size.x - blockPadding) / blockSpace);
+        float blockSpace = blockPadding + BasicDigitalGaugeSettings::BasicDigitalGaugeRPMBlockSpace - 4;
+        int numDots = int(Math::Floor(m_size.x / blockSpace) - 12 - BasicDigitalGaugeSettings::BasicDigitalGaugeRPMSize);
 
-        for (int i = 8; i < numDots; i++) {
+        for (int i = 0; i < numDots; i++) {
             float scaledRpm = i / float(numDots) * m_maxRpm;
 
             nvg::BeginPath();
-            nvg::RoundedRect(m_center.x + i * blockSpace + blockPadding - 165, m_center.y + blockPadding + 50, blockSize.x - 10, blockSize.y - 168, 4);
+            nvg::RoundedRect(m_center.x + i * blockSpace + blockPadding - BasicDigitalGaugeSettings::BasicDigitalGaugeRPMHorizontalPos, m_center.y + blockPadding + BasicDigitalGaugeSettings::BasicDigitalGaugeRPMVerticalPos, 4.5, 30, 4);
             if (m_rpm > m_minRpm && m_rpm >= scaledRpm) {
                 if (m_rpm <= BasicDigitalGaugeSettings::BasicDigitalGaugeRPMDownshift && BasicDigitalGaugeSettings::BasicDigitalGaugeRPMDownshiftUpshift) {
                     nvg::FillColor(RPMDownshiftColor);
@@ -88,7 +86,7 @@ class BasicDigitalGauge : Gauge
         nvg::StrokeWidth(m_size.x * 0.01f);
         nvg::Circle(m_center+margin, m_size.x * 0.08);
 
-        if (m_rpm >= BasicGaugeSettings::BasicGaugeRPMUpshift && BasicGaugeSettings::BasicGaugeGearUpshift) {
+        if (m_rpm >= BasicDigitalGaugeSettings::BasicDigitalGaugeRPMUpshift && BasicDigitalGaugeSettings::BasicDigitalGaugeGearUpshift) {
             nvg::FillColor(GearUpshiftColor);
             nvg::StrokeColor(GearUpshiftColor);
         } else {
@@ -104,7 +102,7 @@ class BasicDigitalGauge : Gauge
         if (m_gear == -1) {
             gear = "R";
         }
-        nvg::Text(m_center.x+margin.x-2, m_center.y+margin.y+11, gear);
+        nvg::Text(m_center.x+margin.x-2, m_center.y+m_size.x * 0.1, gear);
 
         nvg::Stroke();
         nvg::ClosePath();
@@ -112,6 +110,8 @@ class BasicDigitalGauge : Gauge
 
     void RenderSettingsTab() override
     {
+        if (UI::Button("Reset all settings to default"))
+            BasicDigitalGaugeSettings::ResetAllToDefault();
         UI::BeginTabBar("Basic Digital Gauge Settings", UI::TabBarFlags::FittingPolicyResizeDown);
         if (UI::BeginTabItem("Speed")) {
             UI::BeginChild("Speed Settings");
@@ -129,6 +129,11 @@ class BasicDigitalGauge : Gauge
             BasicDigitalGaugeSettings::BasicDigitalGaugeRPMColorAlpha = UI::SliderFloat("RPM alpha", BasicDigitalGaugeSettings::BasicDigitalGaugeRPMColorAlpha,0,1);
             BasicDigitalGaugeSettings::BasicDigitalGaugeRPMBackground = UI::InputColor3("Background color", BasicDigitalGaugeSettings::BasicDigitalGaugeRPMBackground);
             BasicDigitalGaugeSettings::BasicDigitalGaugeRPMBackgroundAlpha = UI::SliderFloat("Background alpha", BasicDigitalGaugeSettings::BasicDigitalGaugeRPMBackgroundAlpha,0,1);
+
+            BasicDigitalGaugeSettings::BasicDigitalGaugeRPMHorizontalPos = UI::SliderInt("Horizontal position", BasicDigitalGaugeSettings::BasicDigitalGaugeRPMHorizontalPos,0,300);
+            BasicDigitalGaugeSettings::BasicDigitalGaugeRPMVerticalPos = UI::SliderInt("Vertical position", BasicDigitalGaugeSettings::BasicDigitalGaugeRPMVerticalPos,0,100);
+            BasicDigitalGaugeSettings::BasicDigitalGaugeRPMSize = UI::SliderInt("Horizontal size", BasicDigitalGaugeSettings::BasicDigitalGaugeRPMSize,0,100);
+            BasicDigitalGaugeSettings::BasicDigitalGaugeRPMBlockSpace = UI::SliderFloat("Block space", BasicDigitalGaugeSettings::BasicDigitalGaugeRPMBlockSpace,0,10);
 
             BasicDigitalGaugeSettings::BasicDigitalGaugeRPMDownshiftUpshift = UI::Checkbox("Downshift/Upshift indicators", BasicDigitalGaugeSettings::BasicDigitalGaugeRPMDownshiftUpshift);
 
