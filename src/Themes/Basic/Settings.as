@@ -1,5 +1,19 @@
 namespace BasicGaugeSettings
 {
+
+    // Background
+    [Setting hidden]
+    bool BasicGaugeBackgroundVisible = false;
+
+    [Setting hidden]
+    string BasicGaugeBackgroundURL = "https://i.imgur.com/sz01oX3.png";
+
+    [Setting hidden]
+    float BasicGaugeBackgroundScale = 0.42f;
+
+    [Setting hidden]
+    float BasicGaugeBackgroundAlpha = 1.0f;
+
     // Speed
     [Setting hidden]
     vec3 BasicGaugeSpeedColor = vec3(1.0f, 1.0f, 1.0f);
@@ -76,6 +90,11 @@ namespace BasicGaugeSettings
     float BasicGaugeGearUpshiftColorAlpha = 1.0f;
 
     void ResetAllToDefault() {
+        BasicGaugeBackgroundVisible = false;
+        BasicGaugeBackgroundURL = "https://i.imgur.com/sz01oX3.png";
+        BasicGaugeBackgroundScale = 0.42f;
+        BasicGaugeBackgroundAlpha = 1.0f;
+
         BasicGaugeSpeedColor = vec3(1.0f, 1.0f, 1.0f);
         BasicGaugeSpeedColorAlpha = 1.0f;
         BasicGaugeSpeedIdleColor = vec3(0.0f, 0.0f, 0.0f);

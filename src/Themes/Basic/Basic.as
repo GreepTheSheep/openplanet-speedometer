@@ -15,6 +15,24 @@ class BasicGauge : Gauge
         m_SpeedFont = nvg::LoadFont("src/Fonts/Oswald-Light-Italic.ttf");
     }
 
+    void RenderBackground() override
+    {
+        if (BasicGaugeSettings::BasicGaugeBackgroundVisible) {
+            auto image = Images::CachedFromURL(BasicGaugeSettings::BasicGaugeBackgroundURL);
+            if (image.m_texture !is null){
+                nvg::BeginPath();
+                vec2 imageSize = image.m_texture.GetSize() * BasicGaugeSettings::BasicGaugeBackgroundScale;
+                vec2 imageCenterPos = vec2(imageSize.x / 2.0f, imageSize.y / 2.0f);
+                nvg::Rect(m_center - imageCenterPos, imageSize);
+                nvg::FillPaint(nvg::TexturePattern(m_center - imageCenterPos, imageSize, 0, image.m_texture, BasicGaugeSettings::BasicGaugeBackgroundAlpha));
+                nvg::Fill();
+                nvg::ClosePath();
+            } else {
+                nvg::Text(m_center, "Image not loaded");
+            }
+        }
+    }
+
     void RenderSpeed() override
     {
         vec4 speedColor = vec4(BasicGaugeSettings::BasicGaugeSpeedColor.x, BasicGaugeSettings::BasicGaugeSpeedColor.y, BasicGaugeSettings::BasicGaugeSpeedColor.z, BasicGaugeSettings::BasicGaugeSpeedColorAlpha);
@@ -142,6 +160,19 @@ class BasicGauge : Gauge
             BasicGaugeSettings::ResetAllToDefault();
         }
         UI::BeginTabBar("Basic Gauge Settings", UI::TabBarFlags::FittingPolicyResizeDown);
+        if (UI::BeginTabItem("Background")) {
+            UI::BeginChild("Background Settings");
+            BasicGaugeSettings::BasicGaugeBackgroundVisible = UI::Checkbox("Display background", BasicGaugeSettings::BasicGaugeBackgroundVisible);
+
+            if (BasicGaugeSettings::BasicGaugeBackgroundVisible) {
+                BasicGaugeSettings::BasicGaugeBackgroundURL = UI::InputText("Image URL", BasicGaugeSettings::BasicGaugeBackgroundURL);
+                BasicGaugeSettings::BasicGaugeBackgroundAlpha = UI::SliderFloat("Alpha", BasicGaugeSettings::BasicGaugeBackgroundAlpha,0,1);
+                BasicGaugeSettings::BasicGaugeBackgroundScale = UI::SliderFloat("Scale", BasicGaugeSettings::BasicGaugeBackgroundScale,0.1f,0.5f);
+           }
+
+            UI::EndChild();
+            UI::EndTabItem();
+        }
         if (UI::BeginTabItem("Speed")) {
             UI::BeginChild("Speed Settings");
             BasicGaugeSettings::BasicGaugeSpeedColor = UI::InputColor3("Speed color", BasicGaugeSettings::BasicGaugeSpeedColor);
