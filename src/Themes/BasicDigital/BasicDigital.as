@@ -1,13 +1,13 @@
 class BasicDigitalGauge : Gauge
 {
-    Resources::Font@ m_GearFont;
-    Resources::Font@ m_SpeedFont;
+    nvg::Font m_GearFont;
+    nvg::Font m_SpeedFont;
 
     BasicDigitalGauge()
     {
         super();
-        @m_GearFont = Resources::GetFont("src/Fonts/Oswald-Demi-Bold-Italic.ttf");
-        @m_SpeedFont = Resources::GetFont("src/Fonts/Oswald-Light-Italic.ttf");
+        m_GearFont = nvg::LoadFont("src/Fonts/Oswald-Demi-Bold-Italic.ttf");
+        m_SpeedFont = nvg::LoadFont("src/Fonts/Oswald-Light-Italic.ttf");
     }
 
     void RenderSpeed() override

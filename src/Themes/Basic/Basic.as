@@ -5,14 +5,14 @@ class BasicGauge : Gauge
     float endAngle = 335.0f;
     float angleTotal = endAngle - startAngle;
 
-    Resources::Font@ m_GearFont;
-    Resources::Font@ m_SpeedFont;
+    nvg::Font m_GearFont;
+    nvg::Font m_SpeedFont;
 
     BasicGauge()
     {
         super();
-        @m_GearFont = Resources::GetFont("src/Fonts/Oswald-Demi-Bold-Italic.ttf");
-        @m_SpeedFont = Resources::GetFont("src/Fonts/Oswald-Light-Italic.ttf");
+        m_GearFont = nvg::LoadFont("src/Fonts/Oswald-Demi-Bold-Italic.ttf");
+        m_SpeedFont = nvg::LoadFont("src/Fonts/Oswald-Light-Italic.ttf");
     }
 
     void RenderSpeed() override
