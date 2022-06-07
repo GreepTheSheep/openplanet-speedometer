@@ -18,7 +18,7 @@ class CachedImage
             yield();
         }
         @m_texture = nvg::LoadTexture(req.Buffer());
-        if (m_texture.GetSize().x == 0) {
+        if (m_texture.GetSize().x == 0 || m_texture.GetSize().x > 16384) {
             @m_texture = null;
         }
     }
