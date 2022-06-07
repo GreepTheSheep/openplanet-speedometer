@@ -27,8 +27,6 @@ class BasicGauge : Gauge
                 nvg::FillPaint(nvg::TexturePattern(m_center - imageCenterPos, imageSize, 0, image.m_texture, BasicGaugeSettings::BasicGaugeBackgroundAlpha));
                 nvg::Fill();
                 nvg::ClosePath();
-            } else {
-                nvg::Text(m_center, "Image not loaded");
             }
         }
     }
