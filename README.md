@@ -29,3 +29,7 @@ This plugin was created for the [Project Horizon](https://trackmania.exchange/s/
 ### BasicDigital
 
 ![BasicDigital theme](images/BasicDigital.jpg)
+
+### TrackmaniaTurbo
+
+![TrackmaniaTurbo theme](images/TrackmaniaTurbo.jpg)
