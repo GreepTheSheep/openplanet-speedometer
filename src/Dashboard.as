@@ -17,6 +17,9 @@ class Dashboard
             case PluginSettings::Themes::BasicDigital:
                 @m_gauge = BasicDigitalGauge();
                 break;
+            case PluginSettings::Themes::TrackmaniaTurbo:
+                @m_gauge = TMTGauge();
+                break;
             default:
                 @m_gauge = Gauge();
                 break;

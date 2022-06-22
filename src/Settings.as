@@ -11,7 +11,8 @@ namespace PluginSettings
 
     enum Themes {
         Basic,
-        BasicDigital
+        BasicDigital,
+        TrackmaniaTurbo
     }
 
     [Setting name="Theme" category="General"]
