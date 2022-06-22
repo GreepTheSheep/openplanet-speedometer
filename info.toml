@@ -2,6 +2,7 @@
 name = "Speedometer"
 author = "Greep"
 category = "Overlay"
+siteid = 207
 
 version = "1.0.0"
 
