@@ -7,7 +7,7 @@ namespace PluginSettings
     bool HideWhenNotPlaying = true;
 
     [Setting name="Hide when interface is hidden" category="General"]
-    bool hideWhenNotIFace = false;
+    bool HideWhenNotIFace = false;
 
     [Setting name="Locator Mode (move speedometer)" category="General"]
     bool LocatorMode = false;
