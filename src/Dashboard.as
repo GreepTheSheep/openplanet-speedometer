@@ -30,6 +30,10 @@ class Dashboard
     {
         if (!PluginSettings::ShowSpeedometer) return;
 
+        if(PluginSettings::hideWhenNotIFace && !UI::IsGameUIVisible()) {
+		    return;
+	    }
+
         auto app = GetApp();
 
         if (PluginSettings::HideWhenNotPlaying) {
