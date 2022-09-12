@@ -19,7 +19,7 @@ class Gauge
         m_speed = vis.FrontSpeed * 3.6f;
         m_gear = vis.CurGear;
 
-        if (m_rpm > m_minRpm && m_speed < 0)
+        if (vis.CurGear == 0)
             m_gear = -1;
 
         vec2 screenSize = vec2(Draw::GetWidth(), Draw::GetHeight());
