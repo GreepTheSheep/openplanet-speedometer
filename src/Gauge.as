@@ -15,8 +15,13 @@ class Gauge
 
     void InternalRender(CSceneVehicleVisState@ vis)
     {
+        if (PluginSettings::ShowVelocity) {
+            m_speed = vis.WorldVel.Length() * 3.6f;
+        } else {
+            m_speed = vis.FrontSpeed * 3.6f;
+        }
+
         m_rpm = VehicleState::GetRPM(vis);
-        m_speed = vis.FrontSpeed * 3.6f;
         m_gear = vis.CurGear;
 
         if (vis.CurGear == 0)
