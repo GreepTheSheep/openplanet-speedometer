@@ -27,6 +27,9 @@ namespace PluginSettings
     [Setting name="Size" category="General"]
     vec2 Size = vec2(350, 350);
 
+    [Setting name="Use velocity instead of speed (useful for ice)" category="General"]
+    bool ShowVelocity = false;
+
     [SettingsTab name="Theme Settings"]
     void RenderThemeSettingsTab()
     {
