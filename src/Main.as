@@ -7,6 +7,9 @@ void Main()
 
 void Render()
 {
+#if MP4
+    SetMP4Speedometer(false);
+#endif
     g_dashboard.Render();
 }
 
@@ -28,4 +31,18 @@ void RenderMenu()
 void OnSettingsChanged()
 {
     g_dashboard.UpdateGaugeTheme();
+}
+
+void OnDestroyed()
+{
+#if MP4
+    SetMP4Speedometer(true);
+#endif
+}
+
+void OnDisabled()
+{
+#if MP4
+    SetMP4Speedometer(true);
+#endif
 }
