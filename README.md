@@ -33,3 +33,7 @@ This plugin was created for the [Project Horizon](https://trackmania.exchange/s/
 ### TrackmaniaTurbo
 
 ![TrackmaniaTurbo theme](images/TrackmaniaTurbo.jpg)
+
+### Ascension2023
+
+![Ascension2023 theme](images/Ascension2023.jpg)
