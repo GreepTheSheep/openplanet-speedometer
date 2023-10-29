@@ -20,6 +20,9 @@ class Dashboard
             case PluginSettings::Themes::TrackmaniaTurbo:
                 @m_gauge = TMTGauge();
                 break;
+            case PluginSettings::Themes::Ascension2023:
+                @m_gauge = Ascension2023Gauge();
+                break;
             default:
                 @m_gauge = Gauge();
                 break;
