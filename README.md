@@ -1,7 +1,7 @@
-<div align="center">
-
 > [!IMPORTANT]
 > This plugin's main repository is now located [here](https://github.com/ezio416/tm-speedometer)
+
+<div align="center">
 
 # Speedometer Dashboard for Openplanet
 
